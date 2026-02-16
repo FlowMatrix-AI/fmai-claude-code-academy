@@ -10,28 +10,28 @@ See: .planning/PROJECT.md (updated 2026-02-16)
 ## Current Position
 
 Phase: 1 of 4 (Content Foundation & Navigation)
-Plan: 1 of 3 in current phase
+Plan: 2 of 3 in current phase
 Status: Executing
-Last activity: 2026-02-16 — Completed 01-01-PLAN.md (project scaffold, content, parser)
+Last activity: 2026-02-16 — Completed 01-02-PLAN.md (content loader, static pages)
 
-Progress: [███░░░░░░░] 33% (1/3 plans in Phase 1)
+Progress: [██████░░░░] 67% (2/3 plans in Phase 1)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 1
-- Average duration: 8 min
-- Total execution time: 0.13 hours
+- Total plans completed: 2
+- Average duration: 7.5 min
+- Total execution time: 0.25 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| 01-content-foundation-navigation | 1/3 | 8 min | 8 min |
+| 01-content-foundation-navigation | 2/3 | 15 min | 7.5 min |
 
 **Recent Trend:**
-- Last 5 plans: 01-01 (8 min)
-- Trend: First plan baseline established
+- Last 5 plans: 01-01 (8 min), 01-02 (7 min)
+- Trend: Consistent execution velocity
 
 *Updated after each plan completion*
 
@@ -46,6 +46,9 @@ Recent decisions affecting current work:
 - Explicit permalink map from Obsidian note titles to routes (not filesystem-based resolution)
 - Content copied into repo (not symlinked) for Vercel deployment compatibility
 - 15 lessons across 7 modules (plan noted 16, actual count corrected)
+- Server Components only for content rendering (no client-side JS needed)
+- Full static generation via generateStaticParams (26 pages at build time)
+- Module cards link to first lesson as primary UX flow
 
 ### Pending Todos
 
@@ -59,16 +62,16 @@ None yet.
 - ~~Content structure mapping from Obsidian folder hierarchy to course structure~~ RESOLVED: 7 modules, 15 lessons mapped
 
 **Known risks:**
-- Content staleness as CLI system evolves (requires version metadata system in Phase 1)
+- ~~Content staleness as CLI system evolves (requires version metadata system in Phase 1)~~ RESOLVED: Version metadata displayed on all lesson pages (CONT-06)
 - localStorage data loss (requires error handling in Phase 3)
 - Quiz design testing memorization vs understanding (requires scenario-based design in Phase 4)
 
 ## Session Continuity
 
 Last session: 2026-02-16 (plan execution)
-Stopped at: Completed 01-01-PLAN.md, ready for 01-02-PLAN.md
+Stopped at: Completed 01-02-PLAN.md, ready for 01-03-PLAN.md
 Resume file: None
 
 ---
 *State initialized: 2026-02-16*
-*Last updated: 2026-02-16 after 01-01-PLAN.md completion*
+*Last updated: 2026-02-16 after 01-02-PLAN.md completion*
