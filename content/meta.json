@@ -1,0 +1,78 @@
+{
+  "title": "FMAI Claude Code Academy",
+  "description": "Interactive training for the FlowMatrix AI Claude Code system",
+  "systemVersion": "1.0.0",
+  "modules": [
+    {
+      "id": "architecture",
+      "title": "Architecture Overview",
+      "description": "System data flow, layer diagram, config relationships",
+      "order": 1,
+      "lessons": [
+        { "id": "overview", "title": "Architecture Overview", "order": 1 }
+      ]
+    },
+    {
+      "id": "agents",
+      "title": "Agents",
+      "description": "22+ agents across 4 suites - GSD Pipeline, Specialist, Dev-Config, Automation",
+      "order": 2,
+      "lessons": [
+        { "id": "index", "title": "Agent Hierarchy Overview", "order": 1 },
+        { "id": "gsd-pipeline", "title": "GSD Pipeline Agents", "order": 2 },
+        { "id": "specialist", "title": "Specialist Agents", "order": 3 },
+        { "id": "dev-config", "title": "Dev-Config Agents", "order": 4 },
+        { "id": "automation-suite", "title": "Automation Suite Agents", "order": 5 },
+        { "id": "design-patterns", "title": "Agent Design Patterns", "order": 6 }
+      ]
+    },
+    {
+      "id": "plugins",
+      "title": "Plugins",
+      "description": "12 plugins across 3 tiers with commands and use cases",
+      "order": 3,
+      "lessons": [
+        { "id": "plugin-reference", "title": "Plugin Reference", "order": 1 }
+      ]
+    },
+    {
+      "id": "hooks",
+      "title": "Hooks",
+      "description": "7 hooks for session lifecycle and tool-use events",
+      "order": 4,
+      "lessons": [
+        { "id": "hook-reference", "title": "Hook Reference", "order": 1 }
+      ]
+    },
+    {
+      "id": "skills",
+      "title": "Skills",
+      "description": "Custom n8n skills and plugin-provided skills catalog",
+      "order": 5,
+      "lessons": [
+        { "id": "skills-reference", "title": "Skills Reference", "order": 1 }
+      ]
+    },
+    {
+      "id": "mcps",
+      "title": "MCPs",
+      "description": "GitHub and OpenClaw MCP connections and deferred tools",
+      "order": 6,
+      "lessons": [
+        { "id": "mcp-reference", "title": "MCP Reference", "order": 1 }
+      ]
+    },
+    {
+      "id": "config",
+      "title": "Configuration & Infrastructure",
+      "description": "Settings, CLAUDE.md, orchestration, session infrastructure, and deployment layers",
+      "order": 7,
+      "lessons": [
+        { "id": "settings-orchestration", "title": "Settings & Orchestration", "order": 1 },
+        { "id": "claude-md-guide", "title": "CLAUDE.md Guide", "order": 2 },
+        { "id": "session-infrastructure", "title": "Session Infrastructure", "order": 3 },
+        { "id": "local-vs-remote", "title": "Local vs Remote Layers", "order": 4 }
+      ]
+    }
+  ]
+}
