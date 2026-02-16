@@ -10,28 +10,28 @@ See: .planning/PROJECT.md (updated 2026-02-16)
 ## Current Position
 
 Phase: 1 of 4 (Content Foundation & Navigation)
-Plan: 0 of TBD in current phase
-Status: Ready to plan
-Last activity: 2026-02-16 — Roadmap created with 4 phases covering all 34 v1 requirements
+Plan: 1 of 3 in current phase
+Status: Executing
+Last activity: 2026-02-16 — Completed 01-01-PLAN.md (project scaffold, content, parser)
 
-Progress: [░░░░░░░░░░] 0%
+Progress: [███░░░░░░░] 33% (1/3 plans in Phase 1)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 0
-- Average duration: N/A
-- Total execution time: 0 hours
+- Total plans completed: 1
+- Average duration: 8 min
+- Total execution time: 0.13 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| - | - | - | - |
+| 01-content-foundation-navigation | 1/3 | 8 min | 8 min |
 
 **Recent Trend:**
-- Last 5 plans: N/A
-- Trend: Not yet established
+- Last 5 plans: 01-01 (8 min)
+- Trend: First plan baseline established
 
 *Updated after each plan completion*
 
@@ -42,7 +42,10 @@ Progress: [░░░░░░░░░░] 0%
 Decisions are logged in PROJECT.md Key Decisions table.
 Recent decisions affecting current work:
 
-- All key decisions currently pending execution (Web app over CLI, Obsidian vault content source, no auth for v1, localStorage for progress, Next.js + Vercel stack)
+- Custom wikilink remark plugin instead of @portaljs/remark-wiki-link (ESM incompatibility with unified v11)
+- Explicit permalink map from Obsidian note titles to routes (not filesystem-based resolution)
+- Content copied into repo (not symlinked) for Vercel deployment compatibility
+- 15 lessons across 7 modules (plan noted 16, actual count corrected)
 
 ### Pending Todos
 
@@ -51,9 +54,9 @@ None yet.
 ### Blockers/Concerns
 
 **Phase 1 readiness considerations (from research):**
-- Obsidian markdown transform strategy needs validation with actual FMAI Knowledge Base vault
-- Next.js 15 + React 19 stability verification (fallback to 14.x + 18 if unstable)
-- Content structure mapping from Obsidian folder hierarchy to course structure
+- ~~Obsidian markdown transform strategy needs validation with actual FMAI Knowledge Base vault~~ RESOLVED: Custom wikilink plugin handles all 3 patterns
+- ~~Next.js 15 + React 19 stability verification (fallback to 14.x + 18 if unstable)~~ RESOLVED: Build succeeds, stable
+- ~~Content structure mapping from Obsidian folder hierarchy to course structure~~ RESOLVED: 7 modules, 15 lessons mapped
 
 **Known risks:**
 - Content staleness as CLI system evolves (requires version metadata system in Phase 1)
@@ -62,10 +65,10 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-02-16 (roadmap creation)
-Stopped at: Roadmap and STATE.md created, ready for Phase 1 planning
+Last session: 2026-02-16 (plan execution)
+Stopped at: Completed 01-01-PLAN.md, ready for 01-02-PLAN.md
 Resume file: None
 
 ---
 *State initialized: 2026-02-16*
-*Last updated: 2026-02-16 after roadmap creation*
+*Last updated: 2026-02-16 after 01-01-PLAN.md completion*
