@@ -1,6 +1,8 @@
 import { notFound } from "next/navigation"
-import { getLesson, getAllLessonPaths } from "@/lib/content/loader"
+import { getLesson, getAllLessonPaths, getModule } from "@/lib/content/loader"
 import { MarkdownRenderer } from "@/components/content/MarkdownRenderer"
+import { LessonBreadcrumbs } from "@/components/navigation/LessonBreadcrumbs"
+import { LessonNavButtons } from "@/components/navigation/LessonNavButtons"
 import type { Metadata } from "next"
 
 interface LessonPageProps {
@@ -44,32 +46,44 @@ export default async function LessonPage(props: LessonPageProps) {
     notFound()
   }
 
+  // Get module for breadcrumb title
+  const module = await getModule(params.moduleId)
+  const moduleTitle = module?.title || params.moduleId
+
   return (
-    <main className="min-h-screen bg-gradient-to-b from-slate-50 to-slate-100 dark:from-slate-950 dark:to-slate-900">
-      <div className="container mx-auto px-4 py-16 sm:px-6 lg:px-8 max-w-4xl">
-        {/* Lesson Header */}
-        <div className="mb-12">
-          <h1 className="text-4xl font-bold tracking-tight text-slate-900 dark:text-slate-100 mb-4">
-            {lesson.title}
-          </h1>
-          <p className="text-lg text-slate-600 dark:text-slate-300">
-            {lesson.description}
-          </p>
-        </div>
+    <div className="min-h-screen">
+      {/* Breadcrumbs */}
+      <LessonBreadcrumbs
+        moduleTitle={moduleTitle}
+        lessonTitle={lesson.title}
+        moduleId={params.moduleId}
+      />
 
-        {/* Lesson Content */}
-        <div className="bg-white dark:bg-slate-900 rounded-lg shadow-sm border border-slate-200 dark:border-slate-800 p-8 mb-8">
-          <MarkdownRenderer htmlContent={lesson.htmlContent} />
-        </div>
-
-        {/* Version Metadata (CONT-06) */}
-        <div className="text-sm text-slate-500 dark:text-slate-400 border-t border-slate-200 dark:border-slate-800 pt-6">
-          <p>
-            Content version: {lesson.systemVersion} | Last verified:{" "}
-            {lesson.lastVerified}
-          </p>
-        </div>
+      {/* Lesson Header */}
+      <div className="mb-8">
+        <h1 className="text-4xl font-bold tracking-tight text-slate-900 dark:text-slate-100 mb-4">
+          {lesson.title}
+        </h1>
+        <p className="text-lg text-slate-600 dark:text-slate-300">
+          {lesson.description}
+        </p>
       </div>
-    </main>
+
+      {/* Lesson Content */}
+      <div className="bg-white dark:bg-slate-900 rounded-lg shadow-sm border border-slate-200 dark:border-slate-800 p-8 mb-8">
+        <MarkdownRenderer htmlContent={lesson.htmlContent} />
+      </div>
+
+      {/* Version Metadata (CONT-06) */}
+      <div className="text-sm text-slate-500 dark:text-slate-400 border-t border-slate-200 dark:border-slate-800 pt-6 mb-8">
+        <p>
+          Content version: {lesson.systemVersion} | Last verified:{" "}
+          {lesson.lastVerified}
+        </p>
+      </div>
+
+      {/* Previous/Next Navigation */}
+      <LessonNavButtons previous={lesson.previous} next={lesson.next} />
+    </div>
   )
 }

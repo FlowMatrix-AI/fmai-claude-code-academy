@@ -4,6 +4,19 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* Responsive content container */
+.prose {
+  max-width: 100%;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+/* Ensure code blocks scroll horizontally without breaking layout */
+pre {
+  overflow-x: auto;
+  max-width: 100%;
+}
+
 /* Prose styling for markdown content */
 .markdown-content pre {
   overflow-x: auto;
@@ -11,6 +24,7 @@
   padding: 1rem;
   margin: 1rem 0;
   background-color: #24292e;
+  max-width: 100%;
 }
 
 .markdown-content code {
