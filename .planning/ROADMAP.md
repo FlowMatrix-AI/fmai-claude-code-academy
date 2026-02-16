@@ -32,10 +32,12 @@ Decimal phases appear between their surrounding integers in numeric order.
   6. Code blocks display with syntax highlighting
   7. Obsidian-specific syntax (wikilinks, embeds, callouts) renders correctly as web equivalents
   8. App is mobile responsive and works on phone, tablet, and desktop
-**Plans**: TBD
+**Plans:** 3 plans
 
 Plans:
-- TBD (will be defined during plan-phase)
+- [ ] 01-01-PLAN.md -- Project scaffold, content copy, and markdown-to-HTML pipeline
+- [ ] 01-02-PLAN.md -- Content loader, page routes, and static generation
+- [ ] 01-03-PLAN.md -- Navigation (sidebar, breadcrumbs, prev/next) and mobile responsiveness
 
 ### Phase 2: Course Content Creation
 **Goal**: All 9 training modules exist with comprehensive lessons covering every component of the FMAI Claude Code system
@@ -97,11 +99,11 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Content Foundation & Navigation | 0/TBD | Not started | - |
+| 1. Content Foundation & Navigation | 0/3 | Planned | - |
 | 2. Course Content Creation | 0/TBD | Not started | - |
 | 3. Progress Tracking & State | 0/TBD | Not started | - |
 | 4. Quiz System & Deployment | 0/TBD | Not started | - |
 
 ---
 *Roadmap created: 2026-02-16*
-*Last updated: 2026-02-16 after initial creation*
+*Last updated: 2026-02-16 after Phase 1 planning*
