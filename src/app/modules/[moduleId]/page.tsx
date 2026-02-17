@@ -44,88 +44,95 @@ export default async function ModulePage(props: ModulePageProps) {
   }
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-slate-50 to-slate-100 dark:from-slate-950 dark:to-slate-900">
-      <div className="container mx-auto px-4 py-16 sm:px-6 lg:px-8 max-w-4xl">
-        {/* Module Header */}
-        <div className="mb-12">
-          <div className="flex items-center gap-4 mb-4">
-            <div className="flex items-center justify-center w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 text-lg font-bold">
-              {module.order}
+    <div className="min-h-screen animate-fade-in">
+      {/* Module Header */}
+      <div className="mb-12 pt-2">
+        <div className="flex items-center gap-4 mb-4">
+          <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-lg font-bold font-mono flex-shrink-0">
+            {String(module.order).padStart(2, "0")}
+          </div>
+          <div>
+            <div className="text-xs font-mono uppercase tracking-widest text-cyan-500/70 mb-1">
+              Module {module.order}
             </div>
-            <h1 className="text-4xl font-bold tracking-tight text-slate-900 dark:text-slate-100">
+            <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-white">
               {module.title}
             </h1>
           </div>
-          <p className="text-lg text-slate-600 dark:text-slate-300">
-            {module.description}
-          </p>
         </div>
+        <p className="text-base text-slate-400 leading-relaxed mt-4 max-w-2xl">
+          {module.description}
+        </p>
+      </div>
 
-        {/* Lesson List */}
-        <div className="space-y-4">
-          <h2 className="text-2xl font-semibold text-slate-900 dark:text-slate-100 mb-6">
-            Lessons
-          </h2>
-          <div className="space-y-3">
-            {module.lessons
-              .sort((a, b) => a.order - b.order)
-              .map((lesson) => (
-                <Link
-                  key={lesson.id}
-                  href={getLessonPath(module.id, lesson.id)}
-                  className="block"
-                >
-                  <div className="flex items-center gap-4 p-4 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:shadow-md hover:border-blue-300 dark:hover:border-blue-700 transition-all">
-                    <div className="flex items-center justify-center w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-sm font-semibold flex-shrink-0">
-                      {lesson.order}
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="text-lg font-medium text-slate-900 dark:text-slate-100">
-                        {lesson.title}
-                      </h3>
-                    </div>
-                    <svg
-                      className="w-5 h-5 text-slate-400 dark:text-slate-600 flex-shrink-0"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M9 5l7 7-7 7"
-                      />
-                    </svg>
+      {/* Accent line */}
+      <div className="h-px w-full bg-gradient-to-r from-cyan-500/40 via-blue-500/20 to-transparent mb-10" />
+
+      {/* Lesson List */}
+      <div>
+        <h2 className="text-xs font-mono uppercase tracking-widest text-slate-500 mb-6">
+          {module.lessons.length} Lessons
+        </h2>
+        <div className="space-y-3">
+          {module.lessons
+            .sort((a, b) => a.order - b.order)
+            .map((lesson, i) => (
+              <Link
+                key={lesson.id}
+                href={getLessonPath(module.id, lesson.id)}
+                className="block animate-fade-up"
+                style={{ animationDelay: `${50 + i * 60}ms` }}
+              >
+                <div className="group flex items-center gap-4 p-4 rounded-xl border border-white/[0.06] bg-white/[0.02] hover:border-cyan-500/30 hover:bg-cyan-500/[0.04] transition-all duration-300">
+                  <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-white/[0.04] text-slate-500 group-hover:text-cyan-400 text-sm font-mono font-semibold flex-shrink-0 transition-colors">
+                    {String(lesson.order).padStart(2, "0")}
                   </div>
-                </Link>
-              ))}
-          </div>
-        </div>
-
-        {/* Back Link */}
-        <div className="mt-12">
-          <Link
-            href="/"
-            className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:underline"
-          >
-            <svg
-              className="w-5 h-5 mr-2"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M15 19l-7-7 7-7"
-              />
-            </svg>
-            Back to all modules
-          </Link>
+                  <div className="flex-1 min-w-0">
+                    <h3 className="text-sm font-medium text-slate-200 group-hover:text-white transition-colors truncate">
+                      {lesson.title}
+                    </h3>
+                  </div>
+                  <svg
+                    className="w-4 h-4 text-slate-700 group-hover:text-cyan-400/60 flex-shrink-0 transition-all duration-300 group-hover:translate-x-1"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={1.5}
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                </div>
+              </Link>
+            ))}
         </div>
       </div>
-    </main>
+
+      {/* Back Link */}
+      <div className="mt-12 pt-6 border-t border-white/[0.04]">
+        <Link
+          href="/"
+          className="group inline-flex items-center gap-2 text-sm text-slate-500 hover:text-cyan-400 transition-colors"
+        >
+          <svg
+            className="w-4 h-4 transition-transform group-hover:-translate-x-1"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={1.5}
+              d="M15 19l-7-7 7-7"
+            />
+          </svg>
+          All modules
+        </Link>
+      </div>
+    </div>
   )
 }

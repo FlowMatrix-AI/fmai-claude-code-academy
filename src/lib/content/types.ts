@@ -26,6 +26,7 @@ export interface LessonNavLink {
 /** Full lesson data including parsed HTML content and navigation */
 export interface Lesson extends LessonMeta {
   htmlContent: string
+  rawMarkdown: string
   slug: string
   previous: LessonNavLink | null
   next: LessonNavLink | null

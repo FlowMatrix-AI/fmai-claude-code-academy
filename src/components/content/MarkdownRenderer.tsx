@@ -12,12 +12,10 @@
 export function MarkdownRenderer({ htmlContent }: { htmlContent: string }) {
   return (
     <div
-      className="prose prose-slate dark:prose-invert max-w-none
+      className="prose max-w-none
         prose-headings:scroll-mt-20
         prose-code:before:content-[''] prose-code:after:content-['']
-        prose-pre:overflow-x-auto prose-pre:rounded-lg
-        prose-a:text-blue-600 dark:prose-a:text-blue-400
-        prose-a:no-underline hover:prose-a:underline"
+        prose-pre:overflow-x-auto"
       dangerouslySetInnerHTML={{ __html: htmlContent }}
     />
   )

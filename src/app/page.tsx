@@ -1,85 +1,111 @@
 import Link from "next/link"
 import { getCourseStructure } from "@/lib/content/loader"
 import { getModulePath } from "@/lib/navigation/paths"
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-  CardContent,
-} from "@/components/ui/card"
+
+const moduleIcons: Record<string, string> = {
+  architecture: "01",
+  agents: "02",
+  plugins: "03",
+  skills: "04",
+  hooks: "05",
+  mcps: "06",
+  config: "07",
+}
 
 export default async function Home() {
   const structure = await getCourseStructure()
+  const totalLessons = structure.modules.reduce(
+    (total, module) => total + module.lessons.length,
+    0
+  )
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-slate-50 to-slate-100 dark:from-slate-950 dark:to-slate-900">
-      <div className="container mx-auto px-4 py-16 sm:px-6 lg:px-8">
-        {/* Hero Section */}
-        <div className="text-center mb-16">
-          <h1 className="text-4xl font-bold tracking-tight text-slate-900 dark:text-slate-100 sm:text-6xl">
-            FMAI Claude Code Academy
-          </h1>
-          <p className="mt-6 text-lg text-slate-600 dark:text-slate-300 sm:text-xl max-w-3xl mx-auto">
-            Learn the full FMAI Claude Code system well enough to use it
-            independently and teach others, without needing to shadow the
-            person who built it.
-          </p>
-          <p className="mt-4 text-sm text-slate-500 dark:text-slate-400">
-            Comprehensive training covering Agents, Plugins, Skills, Hooks,
-            MCPs, and Configuration Architecture
-          </p>
+    <div className="min-h-[80vh] flex flex-col">
+      {/* Hero */}
+      <div className="pt-8 pb-16 animate-fade-up">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium tracking-wider uppercase bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 mb-6">
+          <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
+          v{structure.systemVersion}
         </div>
 
-        {/* Module Grid */}
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {structure.modules.map((module) => {
-            const lessonCount = module.lessons.length
-            const firstLesson = module.lessons[0]
-            const moduleLink = firstLesson
-              ? `/modules/${module.id}/${firstLesson.id}`
-              : getModulePath(module.id)
+        <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1] mb-6">
+          <span className="text-white">FMAI</span>
+          <br />
+          <span className="gradient-text">Claude Code</span>
+          <br />
+          <span className="text-white">Academy</span>
+        </h1>
 
-            return (
-              <Link key={module.id} href={moduleLink}>
-                <Card className="h-full transition-all hover:shadow-lg hover:scale-105 cursor-pointer">
-                  <CardHeader>
-                    <div className="flex items-start justify-between">
-                      <div className="flex-1">
-                        <CardTitle className="text-xl mb-2">
-                          {module.title}
-                        </CardTitle>
-                        <CardDescription>{module.description}</CardDescription>
-                      </div>
-                      <div className="flex items-center justify-center w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 text-sm font-semibold ml-2">
-                        {module.order}
-                      </div>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-slate-500 dark:text-slate-400">
-                      {lessonCount} {lessonCount === 1 ? "lesson" : "lessons"}
-                    </p>
-                  </CardContent>
-                </Card>
-              </Link>
-            )
-          })}
-        </div>
+        <p className="text-lg sm:text-xl text-slate-400 max-w-2xl leading-relaxed mb-8">
+          Master the full FlowMatrix AI Claude Code system. From agents to
+          hooks, plugins to MCPs — everything you need to operate independently.
+        </p>
 
-        {/* Footer Info */}
-        <div className="mt-16 text-center">
-          <p className="text-sm text-slate-500 dark:text-slate-400">
-            Version {structure.systemVersion} • {structure.modules.length}{" "}
-            Modules •{" "}
-            {structure.modules.reduce(
-              (total, module) => total + module.lessons.length,
-              0
-            )}{" "}
-            Lessons
-          </p>
+        <div className="flex flex-wrap gap-4 text-sm text-slate-500">
+          <div className="flex items-center gap-2">
+            <div className="w-1 h-1 rounded-full bg-cyan-500" />
+            {structure.modules.length} Modules
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="w-1 h-1 rounded-full bg-blue-500" />
+            {totalLessons} Lessons
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="w-1 h-1 rounded-full bg-violet-500" />
+            Self-paced
+          </div>
         </div>
       </div>
-    </main>
+
+      {/* Module Grid */}
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {structure.modules.map((module, i) => {
+          const firstLesson = module.lessons[0]
+          const moduleLink = firstLesson
+            ? `/modules/${module.id}/${firstLesson.id}`
+            : getModulePath(module.id)
+
+          return (
+            <Link
+              key={module.id}
+              href={moduleLink}
+              className="animate-fade-up"
+              style={{ animationDelay: `${100 + i * 80}ms` }}
+            >
+              <div className="gradient-border group h-full transition-all duration-300 hover:-translate-y-1">
+                <div className="relative p-6 h-full">
+                  {/* Module number watermark */}
+                  <div className="absolute top-4 right-4 text-4xl font-bold text-white/[0.03] select-none">
+                    {moduleIcons[module.id] || String(module.order).padStart(2, "0")}
+                  </div>
+
+                  <div className="flex items-start gap-3 mb-3">
+                    <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-cyan-500/10 text-cyan-400 text-xs font-bold font-mono flex-shrink-0">
+                      {String(module.order).padStart(2, "0")}
+                    </div>
+                    <h3 className="text-lg font-semibold text-slate-100 group-hover:text-white transition-colors leading-snug">
+                      {module.title}
+                    </h3>
+                  </div>
+
+                  <p className="text-sm text-slate-500 leading-relaxed mb-4 line-clamp-2">
+                    {module.description}
+                  </p>
+
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs text-slate-600 font-mono">
+                      {module.lessons.length} lessons
+                    </span>
+                    <span className="text-xs text-cyan-500/60 group-hover:text-cyan-400 transition-colors">
+                      Start &rarr;
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </Link>
+          )
+        })}
+      </div>
+    </div>
   )
 }

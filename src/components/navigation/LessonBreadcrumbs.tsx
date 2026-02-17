@@ -22,21 +22,21 @@ export function LessonBreadcrumbs({
 }: LessonBreadcrumbsProps) {
   return (
     <Breadcrumb className="mb-6">
-      <BreadcrumbList>
+      <BreadcrumbList className="text-xs font-mono">
         <BreadcrumbItem>
-          <BreadcrumbLink asChild>
+          <BreadcrumbLink asChild className="text-slate-500 hover:text-cyan-400 transition-colors">
             <Link href="/">Home</Link>
           </BreadcrumbLink>
         </BreadcrumbItem>
-        <BreadcrumbSeparator />
+        <BreadcrumbSeparator className="text-slate-700">/</BreadcrumbSeparator>
         <BreadcrumbItem>
-          <BreadcrumbLink asChild>
+          <BreadcrumbLink asChild className="text-slate-500 hover:text-cyan-400 transition-colors">
             <Link href={getModulePath(moduleId)}>{moduleTitle}</Link>
           </BreadcrumbLink>
         </BreadcrumbItem>
-        <BreadcrumbSeparator />
+        <BreadcrumbSeparator className="text-slate-700">/</BreadcrumbSeparator>
         <BreadcrumbItem>
-          <BreadcrumbPage>{lessonTitle}</BreadcrumbPage>
+          <BreadcrumbPage className="text-slate-300">{lessonTitle}</BreadcrumbPage>
         </BreadcrumbItem>
       </BreadcrumbList>
     </Breadcrumb>

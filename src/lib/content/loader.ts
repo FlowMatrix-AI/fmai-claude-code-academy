@@ -87,6 +87,7 @@ export async function getLesson(
     const lesson: Lesson = {
       ...meta,
       htmlContent,
+      rawMarkdown: content,
       slug: lessonId,
       previous: adjacent.previous,
       next: adjacent.next,

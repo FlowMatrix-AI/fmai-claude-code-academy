@@ -25,20 +25,30 @@ export function CourseSidebar({ structure }: CourseSidebarProps) {
 
   return (
     <Sidebar>
-      <SidebarHeader className="border-b border-slate-200 dark:border-slate-800 p-4">
+      <SidebarHeader className="border-b border-white/[0.06] px-4 py-5">
         <Link
           href="/"
-          className="text-lg font-bold text-slate-900 dark:text-slate-100 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+          className="group flex items-center gap-3"
         >
-          FMAI Claude Code Academy
+          <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-600 text-white text-xs font-bold">
+            FM
+          </div>
+          <div>
+            <div className="text-sm font-semibold text-slate-100 group-hover:text-white transition-colors">
+              Claude Code Academy
+            </div>
+            <div className="text-[10px] uppercase tracking-widest text-slate-600">
+              FMAI Training
+            </div>
+          </div>
         </Link>
       </SidebarHeader>
-      <SidebarContent>
+      <SidebarContent className="px-2 py-2">
         {structure.modules.map((module) => (
           <SidebarGroup key={module.id}>
-            <SidebarGroupLabel className="flex items-center justify-between">
+            <SidebarGroupLabel className="flex items-center justify-between px-3 py-2 text-[10px] uppercase tracking-widest text-slate-600 font-semibold">
               <span>{module.title}</span>
-              <span className="text-xs text-slate-500 dark:text-slate-400">
+              <span className="text-slate-700 font-mono tabular-nums">
                 {module.lessons.length}
               </span>
             </SidebarGroupLabel>
@@ -50,8 +60,14 @@ export function CourseSidebar({ structure }: CourseSidebarProps) {
 
                   return (
                     <SidebarMenuItem key={lesson.id}>
-                      <SidebarMenuButton asChild isActive={isActive}>
-                        <Link href={lessonPath}>{lesson.title}</Link>
+                      <SidebarMenuButton
+                        asChild
+                        isActive={isActive}
+                        className="text-sm text-slate-400 hover:text-slate-200 data-[active=true]:text-cyan-400 data-[active=true]:bg-cyan-500/10 rounded-lg transition-all"
+                      >
+                        <Link href={lessonPath}>
+                          <span className="truncate">{lesson.title}</span>
+                        </Link>
                       </SidebarMenuButton>
                     </SidebarMenuItem>
                   )
